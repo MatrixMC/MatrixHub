@@ -16,8 +16,7 @@ public class KittehCannon {
         lore.add("§8§oA little fish with a big surprise...");
         im.setLore(lore);
         item.setItemMeta(im);
-        return item;
-        
+        return item;       
     }
 
 }

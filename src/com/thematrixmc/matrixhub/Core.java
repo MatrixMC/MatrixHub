@@ -18,12 +18,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Core extends JavaPlugin{
+    
+    public static Core instance;
 
     @Override
     public void onEnable() {
         for(Entity e : Bukkit.getWorld("Hub").getEntities()){
                 e.remove();
 	}
+        getConfig().options().copyDefaults(true);
+        saveConfig();
         spawnEntities();
         Bukkit.getServer().getPluginManager().registerEvents(new EntityDamage(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoin(), this);

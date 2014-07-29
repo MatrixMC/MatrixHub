@@ -1,11 +1,13 @@
 package com.thematrixmc.matrixhub.funshop;
 
+import com.thematrixmc.matrixhub.gui.CompassTeleportGUI;
 import com.thematrixmc.matrixhub.particles.ParticleUtils;
 import static java.lang.Math.random;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Ocelot;
@@ -22,9 +24,10 @@ public class PlayerInteract implements Listener{
     public void onPlayerInteract(PlayerInteractEvent event){
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
-        if(item != KittehCannon.getKittyCannon()){
+        if(item != KittehCannon.getKittyCannon() | item.getType() != Material.COMPASS){
             return;
-        }else{
+        }
+        if(item == KittehCannon.getKittyCannon()){
             if(event.getAction() == Action.RIGHT_CLICK_AIR | event.getAction() == Action.LEFT_CLICK_AIR){
                 if(player.hasPermission("kittycannon.funparticles")){
                    Ocelot ocelot = (Ocelot) player.getWorld().spawnEntity(player.getLocation(), EntityType.OCELOT);
@@ -55,7 +58,12 @@ public class PlayerInteract implements Listener{
                     ocelot.setBaby();
                     ocelot.setVelocity(player.getEyeLocation().getDirection().multiply(2));
                 }
+            } 
+        }
+        if(item.getType() == Material.COMPASS){
+            if(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK){
+                player.openInventory(CompassTeleportGUI.getCompassInventory());
             }
-        } 
+        }
     }
 }
