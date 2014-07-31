@@ -2,13 +2,9 @@ package com.thematrixmc.matrixhub.funshop;
 
 import com.thematrixmc.matrixhub.gui.CompassTeleportGUI;
 import com.thematrixmc.matrixhub.particles.ParticleUtils;
-import static java.lang.Math.random;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Player;

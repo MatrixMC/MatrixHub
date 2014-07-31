@@ -5,6 +5,7 @@ import com.thematrixmc.matrixhub.gui.CTGUIHandler;
 import com.thematrixmc.matrixhub.listeners.EntityDamage;
 import com.thematrixmc.matrixhub.listeners.PlayerJoin;
 import com.thematrixmc.matrixhub.listeners.PlayerMove;
+import com.thematrixmc.matrixhub.visibility.Visibility;
 import de.kumpelblase2.remoteentities.EntityManager;
 import de.kumpelblase2.remoteentities.RemoteEntities;
 import de.kumpelblase2.remoteentities.api.RemoteEntity;
@@ -34,19 +35,19 @@ public class Core extends JavaPlugin{
         Bukkit.getServer().getPluginManager().registerEvents(new CTGUIHandler(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerMove(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new Visibility(), this);
 
     }
 
     public void spawnEntities(){
-        EntityManager manager = RemoteEntities.createManager(this);
+        EntityManager manager = RemoteEntities.createManager(instance);
         
-        Location funShopLocation = new Location(Bukkit.getWorld("Hub"), -833, 22, 386);
+        Location funShopLocation = new Location(Bukkit.getWorld("Hub"), -127, 73, 222);
         RemoteEntity funShop = manager.createEntity(RemoteEntityType.Human, funShopLocation, false);
         funShop.setStationary(true);
         funShop.getBukkitEntity().setCustomNameVisible(true);
         funShop.getBukkitEntity().setCustomName("§6Fun§lShop");
         funShop.setName("gamemster2468");
-        funShop.getMind().addMovementDesire(new DesireLookAtNearest(funShop, Player.class, 8F), 1);
         funShop.getMind().addBehaviour(new InteractBehavior(funShop) {
             @Override
             public void onInteract(Player player) {
@@ -54,7 +55,7 @@ public class Core extends JavaPlugin{
             }
         });
         
-        Location accessoriesShopLocation = new Location(Bukkit.getWorld("Hub"), -833, 22, 386);
+        Location accessoriesShopLocation = new Location(Bukkit.getWorld("Hub"), -136, 73, 222);
         RemoteEntity accessoriesShop = manager.createEntity(RemoteEntityType.Human, accessoriesShopLocation, false);
         accessoriesShop.setStationary(true);
         accessoriesShop.getBukkitEntity().setCustomNameVisible(true);

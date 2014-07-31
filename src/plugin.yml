@@ -1,0 +1,5 @@
+name: MatrixHub
+version: 1.0
+author: OnesRodriguez
+main: com.thematrixmc.matrixhub.Core
+depend: [RemoteEntities]
