@@ -43,11 +43,10 @@ public class Core extends JavaPlugin{
         EntityManager manager = RemoteEntities.createManager(instance);
         
         Location funShopLocation = new Location(Bukkit.getWorld("Hub"), -127, 73, 222);
-        RemoteEntity funShop = manager.createEntity(RemoteEntityType.Human, funShopLocation, false);
+        RemoteEntity funShop = manager.createEntity(RemoteEntityType.Villager, funShopLocation, false);
         funShop.setStationary(true);
         funShop.getBukkitEntity().setCustomNameVisible(true);
         funShop.getBukkitEntity().setCustomName("§6Fun§lShop");
-        funShop.setName("gamemster2468");
         funShop.getMind().addBehaviour(new InteractBehavior(funShop) {
             @Override
             public void onInteract(Player player) {
@@ -56,11 +55,10 @@ public class Core extends JavaPlugin{
         });
         
         Location accessoriesShopLocation = new Location(Bukkit.getWorld("Hub"), -136, 73, 222);
-        RemoteEntity accessoriesShop = manager.createEntity(RemoteEntityType.Human, accessoriesShopLocation, false);
+        RemoteEntity accessoriesShop = manager.createEntity(RemoteEntityType.Villager, accessoriesShopLocation, false);
         accessoriesShop.setStationary(true);
         accessoriesShop.getBukkitEntity().setCustomNameVisible(true);
         accessoriesShop.getBukkitEntity().setCustomName("§eAccessories§lShop");
-        accessoriesShop.setName("gamemster2468");
         accessoriesShop.getMind().addMovementDesire(new DesireLookAtNearest(funShop, Player.class, 8F), 1);
         accessoriesShop.getMind().addBehaviour(new InteractBehavior(accessoriesShop) {
             @Override
